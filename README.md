@@ -1,3 +1,3 @@
-# Vheissu - the promised land - V. - Thomas Pynchon
+#### Vheissu - the promised land - V. - Thomas Pynchon
 
-###A centralized online/offline music app for practicing frontend/backend stuff. AngularJS/?
+######A centralized online/offline music app for practicing frontend/backend stuff. AngularJS/?
