@@ -12,7 +12,7 @@ angular
   .module 'vheissuApp', [
     'ngAnimate',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
   ]
   .config ($routeProvider) ->
     $routeProvider

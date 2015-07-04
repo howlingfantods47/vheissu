@@ -10,8 +10,6 @@
 angular.module 'vheissuApp'
   .controller 'AboutCtrl', ->
     @awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
+      'asdasd'
     ]
     return
