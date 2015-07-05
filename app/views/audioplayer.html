@@ -1,1 +1,20 @@
-<p>This is the audioplayer.html view.</p>
+
+<div class="player">
+  <i class="glyphicon glyphicon-volume-up"><input min="0" max="1" step="0.01" type="range" ng-model="audio.volume" /></i>
+</div>
+<div class='player'>
+  <button ng-disabled="currentNum == 0" class="btn btn-default prev" ng-click="prev()">
+    <i class="glyphicon glyphicon-step-backward"></i>
+  </button>
+  <button class="btn btn-default toggle-play" ng-click="togglePlay()" ng-class="{paused:audio.paused}">
+    <span class="play-text"><i class="glyphicon glyphicon-play"></i> </span>
+    <span class="pause-text"><i class="glyphicon glyphicon-pause"></i> </span>
+  </button>
+  <button ng-disabled="currentNum >= (totalNum-1)" class="btn btn-default next" ng-click="next()"> 
+    <i class="glyphicon glyphicon-step-forward"></i>
+  </button>
+</div>
+<div class="player">
+  <input min="0" max="{{audio.duration}}" step="0.01" type="range" ng-model="audio.currentTime" />
+</div>
+
