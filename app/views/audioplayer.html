@@ -1,20 +1,45 @@
 
-<div class="player">
-  <i class="glyphicon glyphicon-volume-up"><input min="0" max="1" step="0.01" type="range" ng-model="audio.volume" /></i>
+<div id='audio-player'>
+
+  <ul>
+
+    <li class='audio-player-element'>
+      <button class='btn btn-default volume-btn' ng-click='toggleMute()' ng-mouseenter='volumeBarShow=true' ng-mouseleave='volumeBarShow=false'>
+        <i ng-show='audio.volume != 0' class='glyphicon glyphicon-volume-up'></i>
+        <i ng-show='audio.volume == 0' class='glyphicon glyphicon-volume-off'></i>
+      </button>
+    </li>
+
+    <li class='audio-player-element' ng-mouseenter='volumeBarShow=true' ng-mouseleave='volumeBarShow=false' ng-show='volumeBarShow' id='volume-slider-bar'>
+      <input min='0' max='1' step='0.01' type='range' ng-model='audio.volume' />
+    </li>
+
+    <li class='audio-player-element'>
+      <button class='btn btn-default btn-prev' ng-click=''>
+        <i class='glyphicon glyphicon-step-backward'></i>
+      </button>
+    </li>
+
+    <li class='audio-player-element'>
+      <button ng-click='togglePlay()' class='btn btn-default play-pause-btn'>
+        <i ng-show='audio.paused' class='glyphicon glyphicon-play'></i>
+        <i ng-show='!audio.paused' class='glyphicon glyphicon-pause'></i>
+      </button>
+    </li>
+
+    <li class='audio-player-element'>
+      <button class='btn btn-default btn-next' ng-click=''>
+        <i class='glyphicon glyphicon-step-forward'></i>
+      </button>
+    </li>
+
+    <li class='audio-player-element' id='audio-progress-bar'>
+      <input min='0' max='{{audio.duration}}' step='0.01' type='range' ng-model='audio.currentTime' />
+    </li>
+
+  </ul>
+
 </div>
-<div class='player'>
-  <button ng-disabled="currentNum == 0" class="btn btn-default prev" ng-click="prev()">
-    <i class="glyphicon glyphicon-step-backward"></i>
-  </button>
-  <button class="btn btn-default toggle-play" ng-click="togglePlay()" ng-class="{paused:audio.paused}">
-    <span class="play-text"><i class="glyphicon glyphicon-play"></i> </span>
-    <span class="pause-text"><i class="glyphicon glyphicon-pause"></i> </span>
-  </button>
-  <button ng-disabled="currentNum >= (totalNum-1)" class="btn btn-default next" ng-click="next()"> 
-    <i class="glyphicon glyphicon-step-forward"></i>
-  </button>
-</div>
-<div class="player">
-  <input min="0" max="{{audio.duration}}" step="0.01" type="range" ng-model="audio.currentTime" />
-</div>
+
+
 

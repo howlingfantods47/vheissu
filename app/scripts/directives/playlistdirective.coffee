@@ -10,7 +10,7 @@ angular.module 'vheissuApp'
   .directive 'playlistDirective', ->
     restrict: 'E'
     scope: {}
-    controller: ($scope)->
+    controller: ($scope, $rootScope)->
       $scope.files = [1..10].map (i) -> i + '.mp3'
     #controllerAs: 'vm'
     #bindToController: true
