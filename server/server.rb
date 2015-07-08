@@ -12,17 +12,13 @@ Mongoid.load!('./mongoid.yml')
 
 class MyServer < Sinatra::Base
 
-  set :port, 9001
-
-  get '/' do
-    'ertef'
-  end
 
   post '/sync_library' do
     library_dir = params['dir']
     Library.createLibrary(library_dir)
 
     reply = {'lib_size' => Song.count}
+
     reply.to_json
   end
 

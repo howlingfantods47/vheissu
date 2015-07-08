@@ -7,6 +7,8 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
@@ -14,7 +16,8 @@ module.exports = function (grunt) {
 
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
-    useminPrepare: 'grunt-usemin'
+    useminPrepare: 'grunt-usemin',
+    configureProxies: 'grunt-connect-proxy'
   });
 
   // Configurable paths for the application
@@ -65,6 +68,16 @@ module.exports = function (grunt) {
 
     // The actual grunt server settings
     connect: {
+      // Adding Sinatra proxy
+      proxies: [
+        {
+          context : '/',
+          host: 'localhost',
+          port: 4567,
+          changeOrigin: false
+        }
+      ],
+
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
@@ -85,7 +98,8 @@ module.exports = function (grunt) {
                 '/app/styles',
                 connect.static('./app/styles')
               ),
-              connect.static(appConfig.app)
+              connect.static(appConfig.app),
+              proxySnippet
             ];
           }
         }
@@ -472,6 +486,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
+      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
