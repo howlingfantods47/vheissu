@@ -1,0 +1,9 @@
+development:
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: vheissu
+      options:
+  options:
+    raise_not_found_error: false
