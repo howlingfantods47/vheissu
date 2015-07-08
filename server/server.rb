@@ -12,15 +12,57 @@ Mongoid.load!('./mongoid.yml')
 
 class MyServer < Sinatra::Base
 
+  set :port, 9001
+
   get '/' do
     'ertef'
   end
 
-  get '/sync_library' do
-    library_dir = '/home/neel/vheissu/public/files/'
+  post '/sync_library' do
+    library_dir = params['dir']
     Library.createLibrary(library_dir)
-    'done, go check the db'
+
+    reply = {'lib_size' => Song.count}
+    reply.to_json
   end
+
+  get '/song_titles' do
+    reply = Song.all.pluck(:title)
+
+    reply.to_json
+  end
+
+  get '/song_titles/album/:albumid' do
+    reply = Song.where(album: params['albumid']).pluck(:title)
+
+    reply.to_json
+  end
+
+  get '/song_titles/artist/:artistid' do
+    reply = Song.where(artist: params['artistid']).pluck(:title)
+
+    reply.to_json
+  end
+
+  get '/artists' do
+    reply = Song.distinct(:artist)
+
+    reply.to_json
+  end
+
+  get '/albums' do
+    reply = Song.distinct(:album)
+
+    reply.to_json
+  end
+
+  get '/albums/:artistid' do
+    reply = Song.where(artist: params['artistid']).distinct(:album)
+
+    reply.to_json
+  end
+
+
 
 end #MyServer
 
