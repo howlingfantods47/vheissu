@@ -15,10 +15,14 @@ class MyServer < Sinatra::Base
 
   post '/sync_library' do
     library_dir = params['dir']
-    Library.createLibrary(library_dir)
+
+    if library_dir.nil?
+      Library.createLibrary('./public/mp3/')
+    else
+      Library.updateLibrary(library_dir)
+    end
 
     reply = {'lib_size' => Song.count}
-
     reply.to_json
   end
 

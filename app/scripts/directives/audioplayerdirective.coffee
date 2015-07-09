@@ -35,4 +35,6 @@ angular.module 'vheissuApp'
         $scope.$apply()
       , 500
 
+      return
+
     templateUrl: '/views/audioplayer.html'

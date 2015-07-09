@@ -10,8 +10,11 @@ class Library
   end
 
   def self.createLibrary(root_dir)
-
     clearLibrary
+    updateLibrary(root_dir)
+  end
+
+  def self.updateLibrary(root_dir)
 
     Dir[root_dir + '**/*'].each do |file|
 
@@ -27,10 +30,11 @@ class Library
             :artist => (mp3.tag.artist.strip if mp3.tag.artist),
             :album => (mp3.tag.album.strip if mp3.tag.album),
             :tracknum => mp3.tag.tracknum,
-            :genre => (mp3.tag.genre_s.strip if mp3.tag.genre_s)
+            :genre => (mp3.tag.genre_s.strip if mp3.tag.genre_s),
+            :album_art => 'cover.jpg'
           )
           song.save
-        end 
+        end
       end
 
     end
@@ -53,6 +57,7 @@ class Song
   field :tracknum, type: Integer
   field :year, type: Integer
   field :genre, type: String
+  field :album_art, type: String
 
 
 end #Song

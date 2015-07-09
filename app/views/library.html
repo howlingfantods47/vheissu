@@ -1,0 +1,71 @@
+<div id='library'>
+
+<div class='row'>
+  <div class='col-md-6'>
+    <ul class='library-buttons'>
+      <li class='library-button'>
+        <button ng-click='showArtists()' class='btn btn-default btn-artists'>
+          Artists
+        </button>
+      </li>
+      <li class='library-button'>
+        <button ng-click='showAlbums()' class='btn btn-default btn-albums'>
+          Albums
+        </button>
+      </li>
+      <li class='library-button'>
+        <button ng-click='showAllTracks()' class='btn btn-default btn-tracks'>
+          Tracks
+        </button>
+      </li>
+      <li class='library-button'>
+        <button ng-click='viewClass="grid-view"' class='btn btn-default btn-grid'>
+          <i class='glyphicon glyphicon-th'></i>
+        </button>
+      </li>
+      <li class='library-button'>
+        <button ng-click='viewClass="list-view"' class='btn btn-default btn-list'>
+          <i class='glyphicon glyphicon-th-list'></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class='col-md-4'>
+    <span>
+      <i class='glyphicon glyphicon-search'></i>
+    </span>
+    <span>
+      <input ng-model='query'/>
+    </span>
+  </div>
+
+</div>
+
+
+<div class='row'>
+  <ul ng-show='showArtistsFlag' class='library-listing' id='library-artist-listing'>
+    <li ng-class='viewClass' ng-repeat='artist in artists | filter:query'>
+      <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
+      <p>{{artist}}</p>
+    </li>
+  </ul>
+
+
+  <ul ng-show='showAlbumsFlag' class='library-listing' id='library-album-listing'>
+    <li ng-class='viewClass' ng-repeat='album in albums | filter:query'>
+      <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
+      <p>{{album}}</p>
+    </li>
+  </ul>
+
+  <ul ng-show='showAllTracksFlag' class='library-listing' id='library-track-listing'>
+    <li ng-class='viewClass' ng-repeat='track in allTracks | filter:query'>
+      <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
+      <p>{{track}}</p>
+    </li>
+  </ul>
+
+</div>
+</div>

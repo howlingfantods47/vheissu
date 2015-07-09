@@ -1,0 +1,56 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+#library {
+}
+
+.library-listing {
+  list-style: none;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.library-buttons {
+  list-style: none;
+}
+
+.library-button {
+  display: inline;
+}
+
+
+// List view
+
+li.list-view {
+  display: block;
+}
+
+img.list-view {
+  display: none;
+}
+
+
+// Grid view
+
+li.grid-view {
+  display: inline-block;
+}
+
+
+img.grid-view {
+  height: auto;
+  width: auto;
+  max-width: 200px;
+  max-height: 200px;
+  margin: auto 10px;
+}
+
+li.grid-view p {
+  display: block;
+  width: 200px;
+  text-align: center;
+  word-wrap: break-word;
+}
