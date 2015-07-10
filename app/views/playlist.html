@@ -21,6 +21,7 @@
   </ul>
 
   <ul class='playlist-listing'>
+    <i ng-show='nowPlaying.length == 0'> Playlist empty </i>
     <li ng-repeat='song in nowPlaying' ng-click='playThisSong(song)'>
       <p>
         {{song.title}}

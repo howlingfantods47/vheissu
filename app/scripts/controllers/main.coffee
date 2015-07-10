@@ -9,6 +9,4 @@
 ###
 angular.module 'vheissuApp'
   .controller 'MainCtrl', ($scope) ->
-    @temp = 'hi'
-    $scope.boo = 'boo'
     return

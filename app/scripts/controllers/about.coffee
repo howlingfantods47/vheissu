@@ -9,7 +9,4 @@
 ###
 angular.module 'vheissuApp'
   .controller 'AboutCtrl', ->
-    @awesomeThings = [
-      'asdasd'
-    ]
     return
