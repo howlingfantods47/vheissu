@@ -62,6 +62,11 @@ class MyServer < Sinatra::Base
     reply.to_json
   end
 
+  get '/track/:trackid' do
+    reply = Song.where(title: params['trackid']).first
+
+    reply.to_json(:except => [:_id, :library_id])
+  end
 
 
 end #MyServer

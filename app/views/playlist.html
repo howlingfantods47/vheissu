@@ -1,8 +1,32 @@
 <div id='playlist-bar'>
-<ul>
-  <li ng-repeat='file in files'>
-    {{file}}
-  </li>
-</ul>
+
+  <h4 style='text-align:center'> Now Playing </h4>
+
+  <hr/>
+
+  <ul class='playlist-buttons'>
+
+    <li class='playlist-button'>
+      <button ng-click='clearPlaylist()' class='btn btn-default btn-clear'>
+        <i class='glyphicon glyphicon-trash'></i>
+      </button>
+    </li>
+
+    <li class='playlist-button'>
+      <button ng-click='playPlaylist()' class='btn btn-default btn-play'>
+        <i class='glyphicon glyphicon-play'></i>
+      </button>
+    </li>
+
+  </ul>
+
+  <ul class='playlist-listing'>
+    <li ng-repeat='song in nowPlaying' ng-click='playThisSong(song)'>
+      <p>
+        {{song.title}}
+      </p>
+    </li>
+  </ul>
+
 </div>
 

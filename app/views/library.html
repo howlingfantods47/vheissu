@@ -39,31 +39,71 @@
     <span>
       <input ng-model='query'/>
     </span>
+
   </div>
 
 </div>
 
 
 <div class='row'>
-  <ul ng-show='showArtistsFlag' class='library-listing' id='library-artist-listing'>
-    <li ng-class='viewClass' ng-repeat='artist in artists | filter:query'>
+
+  <ul ng-show='show == "Artists"' class='library-listing' id='library-artist-listing'>
+    <li ng-class='viewClass' ng-repeat='artist in artists | filter:query' ng-click='showAlbumsByArtist(artist)'>
       <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
-      <p>{{artist}}</p>
+      <p>
+        {{artist}}
+        <span class='library-listing-button' ng-click='addTracksByArtist(artist); $event.stopPropagation()'>+</span>
+      </p>
     </li>
   </ul>
 
-
-  <ul ng-show='showAlbumsFlag' class='library-listing' id='library-album-listing'>
-    <li ng-class='viewClass' ng-repeat='album in albums | filter:query'>
+  <ul ng-show='show == "Albums"' class='library-listing' id='library-album-listing'>
+    <li ng-class='viewClass' ng-repeat='album in albums | filter:query' ng-click='showTracksByAlbum(album)'>
       <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
-      <p>{{album}}</p>
+      <p>
+        {{album}}
+        <span class='library-listing-button' ng-click='addTracksByAlbum(album); $event.stopPropagation()'>+</span>
+      </p>
     </li>
   </ul>
 
-  <ul ng-show='showAllTracksFlag' class='library-listing' id='library-track-listing'>
+  <ul ng-show='show == "Tracks"' class='library-listing' id='library-track-listing'>
     <li ng-class='viewClass' ng-repeat='track in allTracks | filter:query'>
       <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
-      <p>{{track}}</p>
+      <p>
+        {{track}}
+        <span class='library-listing-button' ng-click='addTrackSingle(track)'>+</span>
+      </p>
+    </li>
+  </ul>
+
+  <ul ng-show='show == "AlbumsByArtist"' class='library-listing' id='library-album-listing'>
+    <li ng-class='viewClass' ng-repeat='album in showList | filter:query' ng-click='showTracksByAlbum(album)'>
+      <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
+      <p>
+        {{album}}
+        <span class='library-listing-button' ng-click='addTracksByAlbum(album); $event.stopPropagation()'>+</span>
+      </p>
+    </li>
+  </ul>
+
+  <ul ng-show='show == "TracksByArtist"' class='library-listing' id='library-track-listing'>
+    <li ng-class='viewClass' ng-repeat='track in showList | filter:query'>
+      <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
+      <p>
+        {{track}}
+        <span class='library-listing-button' ng-click='addTrackSingle(track)'>+</span>
+      </p>
+    </li>
+  </ul>
+
+  <ul ng-show='show == "TracksByAlbum"' class='library-listing' id='library-track-listing'>
+    <li ng-class='viewClass' ng-repeat='track in showList | filter:query'>
+      <img ng-class='viewClass' ng-src='{{imageUrl}}'/>
+      <p>
+        {{track}}
+        <span class='library-listing-button' ng-click='addTrackSingle(track)'>+</span>
+      </p>
     </li>
   </ul>
 

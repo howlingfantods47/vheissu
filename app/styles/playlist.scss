@@ -3,26 +3,22 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-#library {
-}
-
-.library-listing {
+.playlist-listing {
   list-style: none;
   height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-
-.library-buttons {
+.playlist-buttons {
   list-style: none;
 }
 
-.library-button {
+.playlist-button {
   display: inline;
 }
 
-.library-listing-button {
+.playlist-listing-button {
   margin: 2px 10px 10px 2px;
   float: right;
   width: 40px;
@@ -33,14 +29,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   bottom: 2px;
 }
 
-.library-listing-button:hover {
+.playlist-listing-button:hover {
   background-color: rgba(38,63,69,0.6);
   cursor: pointer;
 }
 
-// List view
-
-li.list-view {
+.playlist-listing li{
   display: block;
   margin: 5px auto;
   border: 1px solid #263F45;
@@ -48,46 +42,12 @@ li.list-view {
   background-color: rgba(38,63,69,0.3);
 }
 
-li.list-view:hover {
+.playlist-listing li:hover {
   background-color: rgba(38,63,69,0.6);
   cursor: pointer;
 }
 
-li.list-view p {
+.playlist-listing li p {
   margin: 2px 2px 2px 10px;
 }
 
-img.list-view {
-  display: none;
-}
-
-
-// Grid view
-
-li.grid-view {
-  display: inline-block;
-  margin: 5px auto;
-}
-
-li.grid-view:hover {
-  border: 1px solid #263F45;
-  border-radius: 10px;
-  background-color: rgba(38,63,69,0.6);
-  cursor: pointer;
-}
-
-
-img.grid-view {
-  height: auto;
-  width: auto;
-  max-width: 200px;
-  max-height: 200px;
-  margin: 10px;
-}
-
-li.grid-view p {
-  display: block;
-  width: 200px;
-  text-align: center;
-  word-wrap: break-word;
-}

@@ -25,7 +25,7 @@ class Library
       if extension == '.mp3'
         Mp3Info.open(file) do |mp3|
           song = Song.new(
-            :absoulute_path => (file.strip if file),
+            :absolute_path => (file.strip if file),
             :title => (mp3.tag.title.strip if mp3.tag.title),
             :artist => (mp3.tag.artist.strip if mp3.tag.artist),
             :album => (mp3.tag.album.strip if mp3.tag.album),
@@ -50,7 +50,7 @@ class Song
 
   belongs_to :library
 
-  field :absoulute_path, type: String
+  field :absolute_path, type: String
   field :title, type: String
   field :artist, type: String
   field :album, type: String

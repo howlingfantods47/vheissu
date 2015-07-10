@@ -9,7 +9,5 @@ version 0.12.0.
 Run `grunt` for building and `grunt serve` for preview.
 Ruby/mongoid server needs to be up as well, run `ruby server/server.rb` after a `bundle install` (first timers)
 Grunt proxies through to the main server in development.
+Put music in `/server/public/mp3`.
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.

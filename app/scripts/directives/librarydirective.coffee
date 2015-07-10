@@ -13,15 +13,16 @@ angular.module 'vheissuApp'
     templateUrl: '/views/library.html'
     controller: ['$scope', '$rootScope', '$http', ($scope, $rootScope, $http) ->
 
-      $scope.showArtistsFlag = true
-      $scope.showAlbumsFlag = false
-      $scope.showAllTracksFlag = false
+      $scope.show = "Artists"
 
       $scope.viewClass = 'list-view'
 
       #single image for now, TODO - fetch relevant image etc
       $scope.imageUrl = 'cover.jpg'
 
+      $scope.showList = []
+
+      #individual variables for entire lists, single variable for current view
       $http.get('http://localhost:9000/artists').then (response) ->
         $scope.artists = response.data
         return
@@ -36,21 +37,46 @@ angular.module 'vheissuApp'
 
       #TODO : perform cache-based updates here
       $scope.showArtists = ->
-        $scope.showArtistsFlag = true
-        $scope.showAlbumsFlag = false
-        $scope.showAllTracksFlag = false
+        $scope.show = "Artists"
         return
 
       $scope.showAlbums = ->
-        $scope.showArtistsFlag = false
-        $scope.showAlbumsFlag = true
-        $scope.showAllTracksFlag = false
+        $scope.show = "Albums"
         return
 
       $scope.showAllTracks = ->
-        $scope.showArtistsFlag = false
-        $scope.showAlbumsFlag = false
-        $scope.showAllTracksFlag = true
+        $scope.show = "Tracks"
+        return
+
+      $scope.showAlbumsByArtist = (artist) ->
+        $http.get('http://localhost:9000/albums/' + artist).then (response) ->
+          $scope.showList = response.data
+          return
+        $scope.show = "AlbumsByArtist"
+        return
+
+      $scope.showTracksByArtist = (artist) ->
+        $http.get('http://localhost:9000/song_titles/artist/' + artist).then (response) ->
+          $scope.showList = response.data
+          return
+        $scope.show = "TracksByArtist"
+        return
+
+      $scope.showTracksByAlbum = (album) ->
+        $http.get('http://localhost:9000/song_titles/album/' + album).then (response) ->
+          $scope.showList = response.data
+          return
+        $scope.show = "TracksByAlbum"
+        return
+
+      $scope.addTracksByArtist = (artist) ->
+        return
+
+      $scope.addTracksByAlbum = (album) ->
+        return
+
+      $scope.addTrackSingle = (track) ->
+        $rootScope.$broadcast('playlist.add', track)
         return
 
       return
